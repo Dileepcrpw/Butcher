@@ -9,19 +9,17 @@
 </head>
 <body>
     <main class="login-container">
-        <form action="" class="login-form">
+        <form id="loginForm" action="" class="login-form">
             <h1>Login</h1>
-            <input id="phoneNumber" type="tel" placeholder="Mobile Number" maxlength="10" autocomplete="tel-national">
-            <input id="getOtpBtn" type="button" value="GET OTP">
+            <input id="phoneNumber" type="tel" placeholder="Mobile Number" maxlength="10" autocomplete="tel-national" required>
+            <input type="button" id="getOtpBtn" value="Get otp">
+
           
-            <input type="button" value="signup" onclick="window.location.href='signup.html'">
-            <p id="otpStatus" class="otp-status"></p>
-            
+            <input type="button" value="Sign up" onclick="window.location.href='signup.html'">
+
             <footer>By continuing, you agree to the Terms & Conditions and Privacy Policy</footer>
         </form>
     </main>
-
-    
-
+    <script src="auth.js"></script>
 </body>
 </html>

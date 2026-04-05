@@ -44,13 +44,14 @@ body {
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
 }
 
 .login-form input {
     width: 80%;
     padding: 14px;
+    border-radius: 50px;
     font-size: 15px;
 }
 

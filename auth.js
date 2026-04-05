@@ -145,7 +145,8 @@
             e.preventDefault();
 
             var phone = normalizePhone(document.getElementById('phoneNumber').value);
-            var passwordEl = document.getElementById('loginPassword');
+            var passwordEl =
+                document.getElementById('loginPassword') || document.getElementById('password');
             var password = passwordEl ? passwordEl.value : '';
 
             if (phone.length !== 10) {
@@ -171,6 +172,7 @@
                 }
                 setSession({ phone: user.phone, fullName: user.fullName });
                 if (passwordEl) passwordEl.value = '';
+                window.location.href = 'home.html';
             });
         });
     }

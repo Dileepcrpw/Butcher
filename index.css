@@ -17,12 +17,210 @@ body {
     font-family: Arial, sans-serif;
 }
 
+body.home-page {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .login-container {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 24px;
+    gap: 18px;
+}
+
+/* Home: centered search at top */
+.home-search-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 24px;
+    padding-top: max(16px, env(safe-area-inset-top, 0px));
+    padding-right: max(24px, calc(24px + 120px));
+    pointer-events: none;
+}
+
+.home-search-form {
+    pointer-events: auto;
+    width: 100%;
+    max-width: min(90vw, 420px);
+    display: flex;
+    justify-content: center;
+}
+
+.home-search-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.home-search-input {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.94);
+    color: #111;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.home-search-input::placeholder {
+    color: #666;
+}
+
+.home-search-input:focus {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+}
+
+.home-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 24px;
+    padding-top: calc(24px + 56px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    gap: 18px;
+}
+
+.home-container h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.home-welcome {
+    font-size: 18px;
+    text-align: left;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+.home-container .btn-signup {
+    display: block;
+    width: min(90vw, 420px);
+    max-width: 80%;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+/* Home: compact product card + mini order form */
+.home-product-card {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    max-width: min(100%, 320px);
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.home-product-card-media {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-product-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-product-form {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.home-product-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+}
+
+.home-product-meta {
+    font-size: 12px;
+    color: #555;
+    margin-top: -2px;
+}
+
+.home-product-qty-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.home-product-qty {
+    width: 100%;
+    max-width: 100px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.home-product-qty:focus {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+}
+
+.home-product-submit {
+    margin-top: 4px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    align-self: flex-start;
+}
+
+/* Chicken + fish: same card width as lamb (full max-width, stacked) */
+.home-product-row-chicken-fish {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    max-width: min(100%, 320px);
+    align-items: stretch;
+}
+
+.home-product-row-chicken-fish .home-product-card {
+    width: 100%;
+    max-width: min(100%, 250px);
+    flex: 0 0 auto;
 }
 
 .login-form {
@@ -46,11 +244,27 @@ body {
     line-height: 1.4;
 }
 .btn {
-  background-color: blue;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 10px 20px;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
+}
+
+.login-form a.btn-signup,
+.login-form button.btn-login {
+  display: block;
+  width: 80%;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-form button.btn-login {
+  font-family: inherit;
   cursor: pointer;
 }
 
@@ -72,11 +286,22 @@ footer{
     font-size: 12px;
     color: black;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .signup-form footer {
     margin-top: 32px;
+}
+
+.home-container .btn.btn-back-corner {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    width: auto;
+    max-width: none;
+    display: inline-block;
+    font-weight: 700;
 }
 
 .back-to-login {
@@ -85,102 +310,74 @@ footer{
     font-size: 15px;
     color: #111;
     margin-top: 4px;
+    
 }
 
 .back-to-login:hover {
     text-decoration: underline;
+    
 }
 
-/* OTP verification page (dark theme) */
-html.otp-root {
-    background: #141414;
+.forgotpassword {
+  display: block;
+  width: 20%;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: black;
 }
 
-body.otp-screen {
-    background: #141414;
-    color: #fff;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0;
+/* Bottom segmented navigation (home page) */
+.bottom-segmented-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding: 12px 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
 }
 
-.otp-container {
+.bottom-segmented-inner {
+    display: flex;
     width: 100%;
     max-width: 420px;
-    padding: 32px 24px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 14px;
+    padding: 4px;
+    gap: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-.otp-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #fff;
-    text-align: left;
-}
-
-.otp-sent-msg {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.85);
-    text-align: left;
-}
-
-.otp-phone {
-    color: #fff;
-    font-weight: 500;
-}
-
-.otp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-}
-
-.otp-form input#otpInput {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 8px;
-    font-size: 16px;
-    background: #1e1e1e;
-    border: 1px solid #555;
-    color: #fff;
-}
-
-.otp-form input#otpInput::placeholder {
-    color: #9a9a9a;
-}
-
-.btn-verify-otp {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
+.bottom-segmented-nav .segment {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 10px;
+    font-size: 13px;
     font-weight: 600;
-    cursor: pointer;
-    background: #b8ff2e;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 10px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.bottom-segmented-nav .segment:hover {
+    background-color: rgba(0, 0, 0, 0.06);
     color: #111;
 }
 
-.btn-verify-otp:hover {
-    filter: brightness(1.05);
+.bottom-segmented-nav .segment.segment-active {
+    background-color: #111;
+    color: #fff;
 }
 
-.link-resend {
-    align-self: flex-start;
-    padding: 0;
-    border: none;
-    background: none;
-    font-size: 15px;
-    font-weight: 600;
-    color: #b8ff2e;
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.link-resend:hover {
-    text-decoration: underline;
+.bottom-segmented-nav .segment.segment-active:hover {
+    background-color: #222;
+    color: #fff;
 }

@@ -59,7 +59,7 @@
             return {
                 message: isHtml
                     ? 'Backend API not reachable. Open app using http://localhost:3000'
-                    : (text || 'Server returned an empty response')
+                    : (text || `No response body from server (status ${response.status})`)
             };
         }
 
